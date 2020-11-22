@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Forum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ForumController extends Controller
 {
@@ -14,7 +15,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
+        return 'ok';
     }
 
     /**
@@ -24,7 +25,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+        return view('forums.create');
     }
 
     /**
@@ -35,7 +36,33 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
+
+        $data = $request->all();
+
+        $slug  = Str::slug($request->title);
+        $image = $request->file('image');
+
+        if ($image) {
+            $imageName = Str::random(50) . '.' .  $image->extension();
+            $imageUrl = $image->storeAs('images/forums', $imageName);
+        } else {
+            $imageUrl = null;
+        }
+
+        $data['image'] = $imageUrl;
+        $data['slug'] = $slug;
+        $data['user_id'] = auth()->id();
+
+        Forum::create($data);
+
+        session()->flash('success', 'Forum berhasil ditambahkan!');
+
+        return back();
     }
 
     /**
