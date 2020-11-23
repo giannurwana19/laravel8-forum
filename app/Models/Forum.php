@@ -15,4 +15,10 @@ class Forum extends Model
     {
         return asset('storage') . '/' . $this->image;
     }
+
+    // N Forum memiliki N tag
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

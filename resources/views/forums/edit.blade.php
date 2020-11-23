@@ -34,6 +34,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="tags">Tag</label>
+                            <select multiple name="tags[]" id="tags"
+                                class="form-control @error('decription') is-invalid @enderror">
+                                <option disabled>Pilih tag</option>
+                                @foreach ($tags as $tag)
+                                <option @if($forum->tags()->find($tag->id)) selected @endif value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             @if($forum->image)
                             <div class="image mb-2">
                                 <img src="{{ $forum->imageForum }}" class="w-50" alt="gambar">

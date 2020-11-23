@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Forum;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -26,7 +27,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forums.create');
+        $tags = Tag::all();
+        return view('forums.create', compact('tags'));
     }
 
     /**
@@ -37,11 +39,11 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg'
-        ]);
+        // $request->validate([
+        //     'title' => 'required',
+        //     'description' => 'required',
+        //     'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        // ]);
 
         $data = $request->all();
 
@@ -59,7 +61,9 @@ class ForumController extends Controller
         $data['slug'] = $slug;
         $data['user_id'] = auth()->id();
 
-        Forum::create($data);
+        $forum  = Forum::create($data);
+
+        $forum->tags()->sync($request->tags);
 
         session()->flash('success', 'Forum berhasil ditambahkan!');
 
@@ -85,7 +89,8 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
-        return view('forums.edit', compact('forum'));
+        $tags = Tag::all();
+        return view('forums.edit', compact('forum', 'tags'));
     }
 
     /**
@@ -124,6 +129,7 @@ class ForumController extends Controller
         $data['user_id'] = auth()->id();
 
         $forum->update($data);
+        $forum->tags()->sync($request->tags);
 
         session()->flash('success', 'Forum berhasil diubah!');
 

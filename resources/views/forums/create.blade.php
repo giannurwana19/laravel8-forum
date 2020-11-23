@@ -33,6 +33,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="tags">Tag</label>
+                            <select multiple name="tags[]" id="tags"
+                                class="form-control @error('decription') is-invalid @enderror">
+                                <option selected disabled>Pilih Tag</option>
+                                @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="image">Image: </label>
                             <input type="file" name="image" id="image">
                             @error('image')
