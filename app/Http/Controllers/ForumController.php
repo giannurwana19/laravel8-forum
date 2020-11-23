@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Forum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ForumController extends Controller
@@ -84,7 +85,7 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
-        //
+        return view('forums.edit', compact('forum'));
     }
 
     /**
@@ -96,7 +97,37 @@ class ForumController extends Controller
      */
     public function update(Request $request, Forum $forum)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
+
+        $data = $request->all();
+
+        $slug  = Str::slug($request->title);
+        $image = $request->file('image');
+
+        if ($image) {
+            if($forum->image){
+                Storage::delete($forum->image);
+            }
+
+            $imageName = Str::random(50) . '.' .  $image->extension();
+            $imageUrl = $image->storeAs('images/forums', $imageName);
+        } else {
+            $imageUrl = $forum->image;
+        }
+
+        $data['image'] = $imageUrl;
+        $data['slug'] = $slug;
+        $data['user_id'] = auth()->id();
+
+        $forum->update($data);
+
+        session()->flash('success', 'Forum berhasil diubah!');
+
+        return back();
     }
 
     /**
@@ -110,3 +141,26 @@ class ForumController extends Controller
         //
     }
 }
+
+
+
+
+
+
+
+
+
+
+// h: DOKUMENTASI
+// untuk slug biasanya tidak diubah meski judulnya berubah
+// karena itu untuk link seo nya
+// takut nya ketika slug nya diubah
+// link lama tidak bisa digunakan lagi
+// makanya kita harus daftarkan lagi slug nya di google
+// nanti kita cari tahu caranya
+
+// untuk file_systems.php
+// pada baris 48
+// kita juga bisa mengubahnya menjadi public_path('posts')
+// dalam contoh ini
+// jadi kita simpan file di storage/public/posts

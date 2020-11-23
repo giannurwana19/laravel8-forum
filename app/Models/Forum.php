@@ -10,4 +10,9 @@ class Forum extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function getImageForumAttribute()
+    {
+        return asset('storage') . '/' . $this->image;
+    }
 }
