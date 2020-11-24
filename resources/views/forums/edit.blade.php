@@ -36,10 +36,11 @@
                         <div class="form-group">
                             <label for="tags">Tag</label>
                             <select multiple name="tags[]" id="tags"
-                                class="form-control @error('decription') is-invalid @enderror">
+                                class="form-control select2 @error('decription') is-invalid @enderror">
                                 <option disabled>Pilih tag</option>
                                 @foreach ($tags as $tag)
-                                <option @if($forum->tags()->find($tag->id)) selected @endif value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                <option @if($forum->tags()->find($tag->id)) selected @endif
+                                    value="{{ $tag->id }}">{{ $tag->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,4 +66,17 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Pilih tag",
+            allowClear: true,
+            maximumSelectionLength: 2
+        });
+    });
+</script>
+@endpush

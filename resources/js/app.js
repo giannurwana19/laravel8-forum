@@ -4,6 +4,11 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
+window.Popper = require('popper.js').default;
+window.$ = window.jQuery = require('jquery');
+
+import 'select2';
+
 require('./bootstrap');
 
 /**

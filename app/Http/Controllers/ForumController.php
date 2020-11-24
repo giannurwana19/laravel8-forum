@@ -39,11 +39,11 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'description' => 'required',
-        //     'image' => 'nullable|image|mimes:png,jpg,jpeg'
-        // ]);
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
 
         $data = $request->all();
 
@@ -170,3 +170,6 @@ class ForumController extends Controller
 // kita juga bisa mengubahnya menjadi public_path('posts')
 // dalam contoh ini
 // jadi kita simpan file di storage/public/posts
+
+// mencari semua relasi dari tag
+// dd($forum->tags()->allRelatedIds());
