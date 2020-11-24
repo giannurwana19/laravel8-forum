@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="description" class="form-control @error('decription') is-invalid @enderror"
+                            <textarea id="description" name="description" class="form-control @error('decription') is-invalid @enderror"
                                 cols="30" rows="4" placeholder="Description..."></textarea>
                             @error('description')
                             <div class="invalid-feedback">
@@ -70,6 +70,8 @@
             allowClear: true,
             maximumSelectionLength: 2
         });
+
+        CKEDITOR.replace('description');
     });
 </script>
 @endpush

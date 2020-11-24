@@ -77,6 +77,9 @@
             allowClear: true,
             maximumSelectionLength: 2
         });
+
+        CKEDITOR.replace('description');
+
     });
 </script>
 @endpush
