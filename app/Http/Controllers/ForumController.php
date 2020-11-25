@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Forum;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -27,8 +28,13 @@ class ForumController extends Controller
      */
     public function create()
     {
+        $title = 'Buat pertanyaan forum baru';
+        $user = User::findOrFail(auth()->id());
+        $lastForum = $user->forums()->orderBy('id', 'desc')->first();
+        $forum = new Forum();
         $tags = Tag::all();
-        return view('forums.create', compact('tags'));
+
+        return view('forums.create', compact('tags', 'lastForum', 'forum', 'title'));
     }
 
     /**
@@ -89,8 +95,9 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
+        $title = 'Edit pertanyaan forum';
         $tags = Tag::all();
-        return view('forums.edit', compact('forum', 'tags'));
+        return view('forums.edit', compact('forum', 'tags', 'title'));
     }
 
     /**
