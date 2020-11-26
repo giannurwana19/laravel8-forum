@@ -8,7 +8,7 @@ window.Popper = require('popper.js').default;
 window.$ = window.jQuery = require('jquery');
 
 import 'select2';
-import 'ckeditor4';
+import '@fortawesome/fontawesome-free';
 
 require('./bootstrap');
 

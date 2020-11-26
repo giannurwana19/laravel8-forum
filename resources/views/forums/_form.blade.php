@@ -36,7 +36,7 @@
 
 <div class="modal-collapse mb-2">
     <a data-toggle="collapse" style="cursor: pointer" class="text-decoration-none text-dark"
-        data-target="#image-collapse">Upload gambar</a>
+        data-target="#image-collapse">Upload <i class="far fa-images"></i></a>
     <div id="image-collapse" class="collapse mt-2">
         <div class="form-group">
             <input type="file" name="image" id="image">

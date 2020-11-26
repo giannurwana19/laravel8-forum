@@ -48,7 +48,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:512'
         ]);
 
         $data = $request->all();
@@ -112,7 +112,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:512'
         ]);
 
         $data = $request->all();
