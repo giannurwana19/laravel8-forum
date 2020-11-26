@@ -51,5 +51,9 @@
     <div class="image my-2">
         <img src="{{ $forum->imageForum }}" class="w-50" alt="gambar">
     </div>
+    @else
+    <div>
+        <small>Belum ada gambar / screenshot pada postingan ini</small>
+    </div>
     @endif
 </div>
