@@ -18,7 +18,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return 'ok';
+        return view('forums.index');
     }
 
     /**
