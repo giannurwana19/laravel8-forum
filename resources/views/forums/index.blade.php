@@ -18,8 +18,8 @@
             <div class="card" id="tc_paneldefault">
                 <div class="card-body" id="tc_panelbody">
                     <div class="row">
-                        <div class="col-md-8" style="padding-right: 0;"><br>
-                            <table class="table table-bordered">
+                        <div class="col-md-8"><br>
+                            <table class="table table-bordered table-responsive">
                                 <thead class="bg-light text-center" id="tc_thead">
                                     <tr>
                                         <th scope="col">Thread</th>
@@ -33,7 +33,7 @@
                                     <tr>
                                         <td width="453">
                                             <div class="forum_title">
-                                                <h4> <a href="#">{{ $forum->title }}</a></h4>
+                                                <h4> <a href="{{ route('forums.show', $forum) }}">{{ $forum->title }}</a></h4>
                                                 <p>{!! Str::limit($forum->description, 50, '...') !!}</p>
                                                 <div>
                                                     @foreach($forum->tags as $tag)

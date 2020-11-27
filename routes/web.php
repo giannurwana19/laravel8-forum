@@ -29,7 +29,9 @@ Route::middleware('auth')->group(function(){
         Route::get('create', [ForumController::class, 'create'])->name('forums.create');
         Route::post('/', [ForumController::class, 'store'])->name('forums.store');
         Route::get('{forum}/edit', [ForumController::class, 'edit'])->name('forums.edit');
+        Route::get('{forum}/edit', [ForumController::class, 'edit'])->name('forums.edit');
         Route::patch('{forum}', [ForumController::class, 'update'])->name('forums.update');
+        Route::get('{forum}', [ForumController::class, 'show'])->name('forums.show');
     });
 });
 
