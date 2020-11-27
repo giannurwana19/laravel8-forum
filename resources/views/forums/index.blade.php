@@ -67,7 +67,9 @@
                                 </tbody>
                             </table>
                             <!-- pagination -->
+                            <div class="d-flex justify-content-center">
                             {{ $forums->links() }}
+                            </div>
                         </div>
                         <div class="col-md-4"> <br>
                             <div class="card">
