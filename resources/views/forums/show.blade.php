@@ -17,14 +17,15 @@
                 <div class="card-body" id="tc_panelbody">
                     <div class="row">
                         <div class="col-md-8">
+                            <x-alert />
                             <div class="card">
                                 <div class="card-body">
                                     <div class="forum_info">
-                                        <div class="share pull-right">
-                                            <a href="#"> <i class="fa fa-facebook"></i></a>
-                                            <a href="#"> <i class="fa fa-twitter"></i></a>
-                                            <a href="#"> <i class="fa fa-google-plus"></i></a>
-                                        </div>
+                                        <span class="d-flex justify-content-end">
+                                            <a href="#" class="mr-2"> <i class="fab fa-facebook-f"></i></a>
+                                            <a href="#" class="mr-2"> <i class="fab fa-twitter"></i></a>
+                                            <a href="#" class="mr-2"> <i class="fab fa-instagram"></i></a>
+                                        </span>
                                         <a href="#" class="badge badge-primary">{{ $forum->user->name }}</a> |
                                         <small>{{$forum->created_at->diffForHumans()}}</small> |
                                         <small>0 Views</small> |
@@ -91,7 +92,7 @@
                                             </div>
                                         </div>
                                         <div class="comment-show">
-                                            <form action="#" method="post">
+                                            <form action="{{ route('comments.store', $forum) }}" method="post">
                                                 @csrf
 
                                                 <div class="form-group">

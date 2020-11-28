@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,5 @@ Route::middleware('auth')->group(function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('forums/read/{forum:slug}', [ForumController::class, 'show'])->name('forums.show');
+
+Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
