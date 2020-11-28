@@ -22,8 +22,15 @@ class Forum extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    // N Forum dimiliki 1 user
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // 1 forum memiliki N comment (poly)
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
