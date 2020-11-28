@@ -81,8 +81,8 @@
                                 </div>
                             </div>
 
-                            <br>
                             <hr>
+
                             <div class="panel panel-default" style="background-color: #f9f9f9;">
                                 <div class="panel-body">
                                     <div class="add_comment">
@@ -108,10 +108,89 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <hr>
+
+                            <div class="card">
+                                <div class="card-header"><i class="fa fa-clock-o"></i> <small>2 min
+                                        ago</small></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-2" id="img_comment">
+                                            <div class="user-profile text-center">
+                                                <img src="{{asset('storage/images/avatar/default.png')}}"
+                                                    class="rounded-circle" width="30%">
+                                                <div class="comment_user mt-1">
+                                                    <small><b>telukcoding</b></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            Komentar muncul disini.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer link_a d-flex justify-content-between">
+                                    <div class="info_comment">
+                                        <a style="cursor: pointer" data-toggle="collapse" data-target="#collapse1info"
+                                            class="badge badge-primary p-2"><i class="fa fa-info-circle"></i> Info</a>
+                                    </div>
+                                    <div class="reply_comment">
+                                        <a style="cursor: pointer" data-toggle="collapse" data-target="#collapse1reply"
+                                            class="badge badge-primary p-2"><i class="far fa-comment"></i> Reply</a>
+                                    </div>
+                                </div>
+
+                                <div id="collapse1info" class="collapse">
+                                    <div class="card-body">*Klik 'Reply' untuk melihat atau membuat komentar balasan.
+                                    </div>
+                                </div>
+                                <div id="collapse1reply" class="card-collapse collapse">
+                                    <div class="card-body">
+                                        <!-- forelse reply-->
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <i class="fa fa-clock-o"></i> <small>2 min ago </small>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        komentar balasan disini.
+                                                    </div>
+                                                    <div class="col-md-2" id="img_comment_reply">
+                                                        <div class="user-profile text-center">
+                                                            <img src="{{asset('storage/images/avatar/default.png')}}"
+                                                                class="rounded-circle" width="30%">
+                                                            <div class="comment_user mt-1">
+                                                                <small><b>telukcoding</b></small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                    <div class="px-4 mb-3">
+                                        <form action="#" method="post">
+                                            {{csrf_field()}}
+                                            <div class="form-group">
+                                                <input type="text" name="content" class="form-control" id="input_reply"
+                                                    placeholder="Reply here..">
+                                            </div>
+                                            <button class="btn btn-primary font-weight-bold"
+                                                type="submit">Submit</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-md-4">
-                            <a href="{{route('forums.create')}}" class="btn btn-primary btn-block">Buat
-                                Pertanyaan</a><br>
+                            <a href="{{route('forums.create')}}" class="btn btn-primary font-weight-bold btn-block">Buat
+                                Pertanyaan Forum</a><br>
                             <div class="card">
                                 <div class="card-header">Popular</div>
                                 <div class="list-group">
