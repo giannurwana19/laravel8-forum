@@ -6,7 +6,8 @@
         <div class="card-body" id="xx">
             <div class="text-center">
                 <h1 class="font-weight-bold">Gi-FORUM</h1>
-                <h5>Forum sharing ilmu, tanya jawab. Membantu, Mencari Solusi Selesaikan Masalah <em>Coding</em> Mu.
+                <h4><em>"Kepp Spirit & Keep Coding"</em></h4>
+                <h5>Forum sharing ilmu & berdiskusi untuk menemukan solusi!</h5>
                 </h5>
             </div>
         </div>

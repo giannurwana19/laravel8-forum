@@ -41,6 +41,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // 1 user memiliki N forum
     public function forums()
     {
         return $this->hasMany(Forum::class);
