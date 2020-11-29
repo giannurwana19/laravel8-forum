@@ -73,7 +73,6 @@ class ForumController extends Controller
         $forum->tags()->sync($request->tags);
 
         session()->flash('success', 'Forum berhasil ditambahkan!');
-
         return back();
     }
 

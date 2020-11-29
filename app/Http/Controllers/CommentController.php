@@ -19,7 +19,23 @@ class CommentController extends Controller
             'content' => $request->content,
         ]);
 
-        session()->flash('succcess', 'Komentar berhasil dikirm!');
+        session()->flash('success', 'Komentar berhasil dikirim!');
+
+        return back();
+    }
+
+    public function reply(Request $request, Comment $comment)
+    {
+        $request->validate([
+            'content' => 'required'
+        ]);
+
+        $comment->comments()->create([
+            'user_id' => auth()->id(),
+            'content' => $request->content,
+        ]);
+
+        session()->flash('success', 'Komentar berhasil dibalas!');
 
         return back();
     }

@@ -113,7 +113,8 @@
 
                             @forelse ($forum->comments as $comment)
                             <div class="card mb-3">
-                                <div class="card-header"><i class="fa fa-clock-o"></i> <small>{{ $comment->created_at->diffForHumans() }}</small></div>
+                                <div class="card-header"><i class="fa fa-clock-o"></i>
+                                    <small>{{ $comment->created_at->diffForHumans() }}</small></div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-2" id="img_comment">
@@ -132,11 +133,13 @@
                                 </div>
                                 <div class="card-footer link_a d-flex justify-content-between">
                                     <div class="info_comment">
-                                        <a style="cursor: pointer" data-toggle="collapse" data-target="#collapse1info-{{ $comment->id }}"
+                                        <a style="cursor: pointer" data-toggle="collapse"
+                                            data-target="#collapse1info-{{ $comment->id }}"
                                             class="badge badge-primary p-2"><i class="fa fa-info-circle"></i> Info</a>
                                     </div>
                                     <div class="reply_comment">
-                                        <a style="cursor: pointer" data-toggle="collapse" data-target="#collapse1reply-{{ $comment->id }}"
+                                        <a style="cursor: pointer" data-toggle="collapse"
+                                            data-target="#collapse1reply-{{ $comment->id }}"
                                             class="badge badge-primary p-2"><i class="fas fa-comment"></i> Reply</a>
                                     </div>
                                 </div>
@@ -148,33 +151,39 @@
                                 <div id="collapse1reply-{{ $comment->id }}" class="card-collapse collapse">
                                     <div class="card-body">
                                         <!-- forelse reply-->
+                                        @forelse ($comment->comments as $reply)
                                         <div class="card">
                                             <div class="card-header">
-                                                <i class="fa fa-clock-o"></i> <small>2 min ago </small>
+                                                <i class="fa fa-clock-o"></i> <small>{{ $reply->created_at->diffForHumans() }}</small>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        komentar balasan disini.
+                                                        {{ $reply->content }}
                                                     </div>
                                                     <div class="col-md-2" id="img_comment_reply">
                                                         <div class="user-profile text-center">
                                                             <img src="{{asset('storage/images/avatar/default.png')}}"
                                                                 class="rounded-circle" width="30%">
                                                             <div class="comment_user mt-1">
-                                                                <small><b>telukcoding</b></small>
+                                                                <small><b>{{ $reply->user->name }}</b></small>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @empty
+
+                                        @endforelse
+
 
                                     </div>
                                     <hr>
                                     <div class="px-4 mb-3">
-                                        <form action="#" method="post">
-                                            {{csrf_field()}}
+                                        <form action="{{ route('comments.reply', $comment->id) }}" method="post">
+                                            @csrf
+
                                             <div class="form-group">
                                                 <input type="text" name="content" class="form-control" id="input_reply"
                                                     placeholder="Reply here..">

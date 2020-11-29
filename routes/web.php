@@ -40,3 +40,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('forums/read/{forum:slug}', [ForumController::class, 'show'])->name('forums.show');
 
 Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
+Route::post('comments/reply/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
