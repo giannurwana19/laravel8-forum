@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e3adb0ace9eeed4c5610ed74967a616",
+    "content-hash": "85c23514f390db075ef560d524328f80",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1432,6 +1432,62 @@
                 }
             ],
             "time": "2020-10-18T11:50:25+00:00"
+        },
+        {
+            "name": "maher/laravel-counters",
+            "version": "V1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MaherSaleem/laravel-counters.git",
+                "reference": "06e3b1ce143f66919fce4712e611eaf92d0d83fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MaherSaleem/laravel-counters/zipball/06e3b1ce143f66919fce4712e611eaf92d0d83fc",
+                "reference": "06e3b1ce143f66919fce4712e611eaf92d0d83fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maher\\Counters\\CountersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Maher\\Counters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MaherSaleem",
+                    "email": "the-maher@live.com"
+                }
+            ],
+            "description": "management for counters in laravel system",
+            "keywords": [
+                "Decrement",
+                "counters",
+                "increment",
+                "laravel",
+                "maher",
+                "number of visitors",
+                "visitors"
+            ],
+            "support": {
+                "issues": "https://github.com/MaherSaleem/laravel-counters/issues",
+                "source": "https://github.com/MaherSaleem/laravel-counters/tree/V1.0.2"
+            },
+            "time": "2018-07-18T06:58:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7312,7 +7368,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "maher/laravel-counters": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

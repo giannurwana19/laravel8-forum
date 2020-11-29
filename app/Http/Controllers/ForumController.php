@@ -84,6 +84,7 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
+        $forum->incrementCounter('number_of_visitors'); // .. 1
         return view('forums.show', compact('forum'));
     }
 
@@ -180,3 +181,6 @@ class ForumController extends Controller
 
 // mencari semua relasi dari tag
 // dd($forum->tags()->allRelatedIds());
+
+// p: clue 1
+// kita menambahkan 1 jumlah visitor setiap kali membuat page show

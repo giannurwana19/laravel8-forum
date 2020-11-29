@@ -28,7 +28,7 @@
                                         </span>
                                         <a href="#" class="badge badge-primary">{{ $forum->user->name }}</a> |
                                         <small>{{$forum->created_at->diffForHumans()}}</small> |
-                                        <small>0 Views</small> |
+                                        <small>{{ $forum->getCounterValue('number_of_visitors') }} views</small> |
                                         <small>{{ $forum->comments()->count() }} Comments</small> |
                                         @foreach($forum->tags as $tag)
                                         <div class="badge badge-primary">#{{$tag->name}}</div>
@@ -179,7 +179,7 @@
                                             </div>
                                         </div>
                                         @empty
-                                        
+
                                         @endforelse
                                     </div>
                                     <hr>
