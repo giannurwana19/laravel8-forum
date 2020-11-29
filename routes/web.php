@@ -30,14 +30,15 @@ Route::middleware('auth')->group(function(){
         Route::get('create', [ForumController::class, 'create'])->name('forums.create');
         Route::post('/', [ForumController::class, 'store'])->name('forums.store');
         Route::get('{forum:slug}/edit', [ForumController::class, 'edit'])->name('forums.edit');
-        Route::get('{forum:slug}/edit', [ForumController::class, 'edit'])->name('forums.edit');
         Route::patch('{forum:slug}', [ForumController::class, 'update'])->name('forums.update');
     });
+
+    Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('comments/reply/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('forums/read/{forum:slug}', [ForumController::class, 'show'])->name('forums.show');
 
-Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
-Route::post('comments/reply/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
+

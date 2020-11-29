@@ -91,6 +91,7 @@
                                                 <h4>Add a Comment</h4>
                                             </div>
                                         </div>
+                                        @auth
                                         <div class="comment-show">
                                             <form action="{{ route('comments.store', $forum) }}" method="post">
                                                 @csrf
@@ -101,10 +102,13 @@
                                                     <label for="Your-Comment">Your Comment:</label>
                                                 </div>
                                                 <div class="button-gg">
-                                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
+                                        @else
+                                        <div class="comment-show mt-5"><a href="{{ route('login') }}" class="badge badge-primary">Login</a> to comment!</div>
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +158,8 @@
                                         @forelse ($comment->comments as $reply)
                                         <div class="card">
                                             <div class="card-header">
-                                                <i class="fa fa-clock-o"></i> <small>{{ $reply->created_at->diffForHumans() }}</small>
+                                                <i class="fa fa-clock-o"></i>
+                                                <small>{{ $reply->created_at->diffForHumans() }}</small>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
@@ -174,10 +179,8 @@
                                             </div>
                                         </div>
                                         @empty
-
+                                        
                                         @endforelse
-
-
                                     </div>
                                     <hr>
                                     <div class="px-4 mb-3">
@@ -188,7 +191,7 @@
                                                 <input type="text" name="content" class="form-control" id="input_reply"
                                                     placeholder="Reply here..">
                                             </div>
-                                            <button class="btn btn-primary font-weight-bold"
+                                            <button class="btn btn-primary btn-sm font-weight-bold"
                                                 type="submit">Submit</button>
                                         </form>
                                     </div>
