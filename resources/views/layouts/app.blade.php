@@ -100,6 +100,8 @@
         </main>
     </div>
 
+    @include('partials._footer')
+
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
     @stack('scripts')
