@@ -203,16 +203,9 @@
                             @endforelse
                         </div>
                         <div class="col-md-4">
-                            <a href="{{route('forums.create')}}" class="btn btn-primary font-weight-bold btn-block">Buat
-                                Pertanyaan Forum</a><br>
-                            <div class="card">
-                                <div class="card-header">Popular</div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item" id="index_hover">What is Lorem Ipsum?
-                                        <a href="#" class="list-group-item" id="index_hover">Where does it come from?
-                                        </a>
-                                </div>
-                            </div>
+                            <a href="{{route('forums.create')}}" class="btn btn-primary font-weight-bold btn-block mb-3">Buat
+                                Pertanyaan Forum</a>
+                            @include('partials._popular')
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
@@ -220,7 +213,7 @@
             </div>
         </div>
     </div>
-</div><br>
+</div>
 @endsection
 
 @push('styles')

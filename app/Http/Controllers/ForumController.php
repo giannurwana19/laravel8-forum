@@ -6,6 +6,7 @@ use App\Models\Forum;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -18,8 +19,15 @@ class ForumController extends Controller
      */
     public function index()
     {
+        $populars = $this->getPopularForums();
+
         $forums = Forum::latest()->paginate(4);
-        return view('forums.index', compact('forums'));
+        return view('forums.index', compact('forums', 'populars'));
+    }
+
+    private function getPopularForums()
+    {
+        return Forum::join('counterables', 'forums.id', '=', 'counterables.counterable_id')->orderBy('value', 'desc')->take(4)->get(); // .. 2
     }
 
     /**
@@ -84,8 +92,10 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
+        $populars = $this->getPopularForums();
+
         $forum->incrementCounter('number_of_visitors'); // .. 1
-        return view('forums.show', compact('forum'));
+        return view('forums.show', compact('forum', 'populars'));
     }
 
     /**
@@ -184,3 +194,6 @@ class ForumController extends Controller
 
 // p: clue 1
 // kita menambahkan 1 jumlah visitor setiap kali membuat page show
+
+// p: clue 2
+// kitam mengambil data post yang popular berdasarkan jumlah value yang paling besar pada counternya

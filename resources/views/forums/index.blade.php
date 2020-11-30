@@ -19,7 +19,7 @@
             <div class="card" id="tc_paneldefault">
                 <div class="card-body" id="tc_panelbody">
                     <div class="row">
-                        <div class="col-md-8"><br>
+                        <div class="col-md-8">
                             <table class="table table-bordered table-responsive">
                                 <thead class="bg-light text-center" id="tc_thead">
                                     <tr>
@@ -72,17 +72,10 @@
                             {{ $forums->links() }}
                             </div>
                         </div>
-                        <div class="col-md-4"> <br>
-                            <div class="card">
-                                <div class="card-header">Popular</div>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action" id="index_hover">What is
-                                        Lorem Ipsum?
-                                        <a href="#" class="list-group-item list-group-item-action"
-                                            id="index_hover">Where does it come from?
-                                        </a>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <a href="{{route('forums.create')}}" class="btn btn-primary font-weight-bold btn-block mb-3">Buat
+                                                            Pertanyaan Forum</a>
+                            @include('partials._popular')
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
