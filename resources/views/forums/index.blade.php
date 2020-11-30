@@ -18,6 +18,7 @@
         <div class="col-md-12" id="tc_container_wrap">
             <div class="card" id="tc_paneldefault">
                 <div class="card-body" id="tc_panelbody">
+                    @include('partials._popular-search')
                     <div class="row">
                         <div class="col-md-8">
                             <table class="table table-bordered table-responsive">
@@ -34,7 +35,9 @@
                                     <tr>
                                         <td width="453">
                                             <div class="forum_title">
-                                                <h4> <a href="{{ route('forums.show', $forum) }}">{{ $forum->title }}</a></h4>
+                                                <h4> <a
+                                                        href="{{ route('forums.show', $forum) }}">{{ $forum->title }}</a>
+                                                </h4>
                                                 <p>{!! Str::limit($forum->description, 50, '...') !!}</p>
                                                 <div>
                                                     @foreach($forum->tags as $tag)
@@ -53,8 +56,10 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        <td style="text-align: center"><small> {{ $forum->comments()->count() }}</small></td>
-                                        <td style="text-align: center"><small> {{ $forum->getCounterValue('number_of_visitors') }}</small></td>
+                                        <td style="text-align: center"><small> {{ $forum->comments()->count() }}</small>
+                                        </td>
+                                        <td style="text-align: center"><small>
+                                                {{ $forum->getCounterValue('number_of_visitors') }}</small></td>
                                         <td>
                                             <div class="forum_by">
                                                 <small
@@ -69,12 +74,13 @@
                             </table>
                             <!-- pagination -->
                             <div class="d-flex justify-content-center">
-                            {{ $forums->links() }}
+                                {{ $forums->links() }}
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <a href="{{route('forums.create')}}" class="btn btn-primary font-weight-bold btn-block mb-3">Buat
-                                                            Pertanyaan Forum</a>
+                            <a href="{{route('forums.create')}}"
+                                class="btn btn-primary font-weight-bold btn-block mb-3">Buat
+                                Pertanyaan Forum</a>
                             @include('partials._popular')
                         </div>
                     </div>

@@ -41,4 +41,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('forums/read/{forum:slug}', [ForumController::class, 'show'])->name('forums.show');
 
-
+Route::get('populars', [ForumController::class, 'populars'])->name('forums.populars');

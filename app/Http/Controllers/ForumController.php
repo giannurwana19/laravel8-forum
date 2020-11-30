@@ -25,9 +25,20 @@ class ForumController extends Controller
         return view('forums.index', compact('forums', 'populars'));
     }
 
-    private function getPopularForums()
+    private function getPopularForums(int $number = 4)
     {
-        return Forum::join('counterables', 'forums.id', '=', 'counterables.counterable_id')->orderBy('value', 'desc')->take(4)->get(); // .. 2
+        return Forum::join('counterables', 'forums.id', '=', 'counterables.counterable_id')->orderBy('value', 'desc')->take($number)->get(); // .. 2
+    }
+
+    /**
+     * show popular forums
+     *
+     * display a listing of the pupolar forums
+     */
+    public function populars()
+    {
+        $populars = $this->getPopularForums(10);
+        return view('forums.popular', compact('populars'));
     }
 
     /**
