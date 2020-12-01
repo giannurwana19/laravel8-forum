@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,14 @@ Route::middleware('auth')->group(function(){
 
     Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
     Route::post('comments/reply/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
+
+    Route::prefix('tags')->group(function(){
+        Route::get('/', [TagController::class, 'index'])->name('tags.index');
+        Route::post('/', [TagController::class, 'store'])->name('tags.store');
+        Route::get('{tag:slug}/edit', [TagController::class, 'edit'])->name('tags.edit');
+        Route::patch('{tag:slug}', [TagController::class, 'update'])->name('tags.update');
+        Route::delete('{tag:slug}', [TagController::class, 'destroy'])->name('tags.destroy');
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -42,6 +42,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('forums.index') }}">{{ __('Forum') }}</a></li>
+                        @auth
+                        <li><a class="nav-link" href="{{ route('tags.index') }}">{{ __('Tag') }}</a></li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
