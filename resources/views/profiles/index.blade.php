@@ -2,14 +2,14 @@
 @section('title', "My Profile")
 @section('content')
 <div class="container">
-    <div class="jumbotron bg-white border" id="tc_jumbotron_profile">
+    <div class="jumbotron bg-primary" id="tc_jumbotron_profile">
         <div class="card-body">
             <div class="text-center">
                 <div class="profile_img my-3">
                     <img src="{{ $user->getImage() }}" style="width: 150px" class="rounded-circle">
                 </div>
                 <div id="user_name">
-                    <h3>{{$user->name}}</h3>
+                    <h3 class="text-white">{{$user->name}}</h3>
                     <br>
                 </div>
             </div>

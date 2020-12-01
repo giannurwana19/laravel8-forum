@@ -2,9 +2,9 @@
 @section('title','Forum')
 @section('content')
 <div class="container">
-    <div class="jumbotron bg-white border" id="tc_jumbotron">
+    <div class="jumbotron bg-primary" id="tc_jumbotron">
         <div class="card-body" id="xx">
-            <div class="text-center">
+            <div class="text-center text-white">
                 <h1 class="font-weight-bold">Gi-FORUM</h1>
                 <h4><em>"Kepp Spirit & Keep Coding"</em></h4>
                 <h5>Forum sharing ilmu & berdiskusi untuk menemukan solusi!</h5>
@@ -38,7 +38,7 @@
                                                 <h4> <a
                                                         href="{{ route('forums.show', $forum) }}">{{ $forum->title }}</a>
                                                 </h4>
-                                                <p>{!! Str::limit($forum->description, 50, '...') !!}</p>
+                                                <p>{!! strip_tags(Str::limit($forum->description, 50, '...')) !!}</p>
                                                 <div>
                                                     @foreach($forum->tags as $tag)
                                                     <a href="#"

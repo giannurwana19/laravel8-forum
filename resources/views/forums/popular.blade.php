@@ -2,10 +2,10 @@
 @section('title','Popular')
 @section('content')
 <div class="container">
-    <div class="jumbotron bg-white border" id="tc_jumbotron">
+    <div class="jumbotron bg-primaryr" id="tc_jumbotron">
         <div class="card-body" id="xx">
-            <div class="text-center">
-                <h1 style="font-size: 3.5rem;">Popular</h1>
+            <div class="text-center text-white">
+                <h1 style="font-size: 3.5rem;">Populer</h1>
                 <p>Menampilkan thread populer. </p>
             </div>
         </div>

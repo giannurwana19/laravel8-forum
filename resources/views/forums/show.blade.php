@@ -2,9 +2,9 @@
 @section('title',"$forum->title")
 @section('content')
 <div class="container">
-    <div class="jumbotron bg-white border" id="tc_jumbotron">
+    <div class="jumbotron bg-primary" id="tc_jumbotron">
         <div class="card-body" id="xx">
-            <div class="tc_head_title text-center">
+            <div class="tc_head_title text-center text-white">
                 <h2>{{$forum->title}}</h2>
             </div>
         </div>
@@ -26,7 +26,7 @@
                                             <a href="#" class="mr-2"> <i class="fab fa-twitter"></i></a>
                                             <a href="#" class="mr-2"> <i class="fab fa-instagram"></i></a>
                                         </span>
-                                        <a href="#" class="badge badge-primary">{{ $forum->user->name }}</a> |
+                                        <a href="{{ route('profile.index', $forum->user->name) }}" class="badge badge-primary">{{ $forum->user->name }}</a> |
                                         <small>{{$forum->created_at->diffForHumans()}}</small> |
                                         <small>{{ $forum->getCounterValue('number_of_visitors') }} views</small> |
                                         <small>{{ $forum->comments()->count() }} Comments</small> |
@@ -473,7 +473,6 @@
 
 @push('scripts')
 <script>
-    console.log('ok')
     var openComment = document.querySelector('.h1');
     var addComment = document.querySelector('.add_comment');
     openComment.addEventListener('click', function(){
