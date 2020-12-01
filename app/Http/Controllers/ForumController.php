@@ -173,7 +173,14 @@ class ForumController extends Controller
      */
     public function destroy(Forum $forum)
     {
-        //
+        $forum->tags()->detach();
+        $forum->comments()->delete();
+        Storage::delete($forum->image);
+        $forum->delete();
+
+        session()->flash('success', 'Forum berhasil dihapus!');
+
+        return back();
     }
 }
 

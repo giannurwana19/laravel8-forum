@@ -42,30 +42,35 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-2">
+                            <x-alert />
                             <table class="table table-bordered">
                                 <tbody>
                                     @forelse ($forums as $forum)
                                     <tr>
-                                        <td><a href="">{{ $forum->title }}</a>, <i style="font-size: 10px;">
+                                        <td><a href="{{ route('forums.show', $forum) }}">{{ $forum->title }}</a>, <i
+                                                style="font-size: 10px;">
                                                 {{ $forum->created_at->diffForHumans() }},
                                                 {{ $forum->comments()->count() }} Comments,
                                                 {{ $forum->getCounterValue('number_of_visitors') }} Views</i>
                                         </td>
                                         @if (auth()->id() == $forum->user_id)
-                                        <td width="10"><a href="{{ route('forums.edit', $forum) }}" class="btn btn-sm btn-success"><i
-                                                    class="fa fa-edit"></i> Edit</a></td>
+                                        <td width="10"><a href="{{ route('forums.edit', $forum) }}"
+                                                class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a></td>
                                         <td width="10">
-                                            <form action="#" method="post">
+                                            <form action="{{ route('forums.destroy', $forum) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"><i
-                                                        class="fa fa-trash"></i> Delete</button>
+                                                <button type="submit"
+                                                    onclick="alert('yakin hapus {{ $forum->title }}?')"
+                                                    class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                    Delete</button>
                                             </form>
                                         </td>
                                         @endif
-                                        <td width="10"><a href="{{ route('forums.show', $forum) }}" class="btn btn-sm btn-info text-white"><i
-                                                    class="fa fa-eye"></i> View</a></td>
+                                        <td width="10"><a href="{{ route('forums.show', $forum) }}"
+                                                class="btn btn-sm btn-info text-white"><i class="fa fa-eye"></i>
+                                                View</a></td>
                                     </tr>
                                     @empty
                                     <p class="text-center mt-3">No Thread</p>

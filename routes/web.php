@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/', [ForumController::class, 'store'])->name('forums.store');
         Route::get('{forum:slug}/edit', [ForumController::class, 'edit'])->name('forums.edit');
         Route::patch('{forum:slug}', [ForumController::class, 'update'])->name('forums.update');
+        Route::delete('{forum:slug}', [ForumController::class, 'destroy'])->name('forums.destroy');
     });
 
     Route::post('comments/store/{forum:slug}', [CommentController::class, 'store'])->name('comments.store');
