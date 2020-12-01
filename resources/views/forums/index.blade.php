@@ -54,6 +54,9 @@
                                                 <div class="badge badge-primary tag_label_image"><i
                                                         class="fa fa-image"></i></div>
                                                 @endif
+                                                <div class="mt-1">
+                                                    <small>{{ $forum->created_at->diffForHumans() }}</small>
+                                                </div>
                                             </div>
                                         </td>
                                         <td style="text-align: center"><small> {{ $forum->comments()->count() }}</small>
@@ -62,9 +65,8 @@
                                                 {{ $forum->getCounterValue('number_of_visitors') }}</small></td>
                                         <td>
                                             <div class="forum_by">
-                                                <small
-                                                    style="margin-bottom: 0; color: #666">{{ $forum->created_at->diffForHumans() }}</small>
-                                                <small>by <a href="#">{{ $forum->user->name }}</a></small>
+                                                <a
+                                                    href="{{ route('profile.index', $forum->user->name) }}">{{ $forum->user->name }}</a></small>
 
                                             </div>
                                         </td>

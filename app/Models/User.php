@@ -46,4 +46,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Forum::class);
     }
+
+    public function getImage()
+    {
+        if($this->image){
+            return asset('storage/' . $this->image);
+        }
+
+        return asset('storage/images/avatar/default.png');
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('forums/read/{forum:slug}', [ForumController::class, 'show'])->name('forums.show');
 
 Route::get('populars', [ForumController::class, 'populars'])->name('forums.populars');
+
+Route::get('user/profile/{user:name}', [ProfileController::class, 'index'])->name('profile.index');
