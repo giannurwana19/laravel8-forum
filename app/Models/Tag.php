@@ -15,4 +15,9 @@ class Tag extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function forums()
+    {
+        return $this->belongsToMany(Forum::class);
+    }
 }

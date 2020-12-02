@@ -2,7 +2,7 @@
 @section('title','Popular')
 @section('content')
 <div class="container">
-    <div class="jumbotron bg-primaryr" id="tc_jumbotron">
+    <div class="jumbotron bg-primary" id="tc_jumbotron">
         <div class="card-body" id="xx">
             <div class="text-center text-white">
                 <h1 style="font-size: 3.5rem;">Populer</h1>

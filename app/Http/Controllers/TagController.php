@@ -15,6 +15,13 @@ class TagController extends Controller
      */
     public function index()
     {
+        $tags = Tag::latest()->paginate(10);
+        $populars = $this->getPopularForums();
+        return view('tags.index', compact('populars', 'tags'));
+    }
+
+    public function create()
+    {
         $title = 'Buat Tag baru';
         $tags = Tag::latest()->paginate(10);
         $tag = new Tag();
