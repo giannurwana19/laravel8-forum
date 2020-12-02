@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,14 +41,17 @@ Route::middleware('auth')->group(function(){
     Route::post('comments/reply/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
 
     Route::prefix('tags')->group(function(){
-        Route::get('/', [TagController::class, 'index'])->name('tags.index');
         Route::post('/', [TagController::class, 'store'])->name('tags.store');
         Route::get('create', [TagController::class, 'create'])->name('tags.create');
         Route::get('{tag:slug}/edit', [TagController::class, 'edit'])->name('tags.edit');
-        Route::get('{tag:slug}', [TagController::class, 'show'])->name('tags.show');
         Route::patch('{tag:slug}', [TagController::class, 'update'])->name('tags.update');
         Route::delete('{tag:slug}', [TagController::class, 'destroy'])->name('tags.destroy');
     });
+});
+
+Route::prefix('tags')->group(function(){
+    Route::get('/', [TagController::class, 'index'])->name('tags.index');
+    Route::get('{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

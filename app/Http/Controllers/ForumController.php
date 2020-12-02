@@ -20,8 +20,13 @@ class ForumController extends Controller
     public function index()
     {
         $populars = $this->getPopularForums();
-
         $forums = Forum::latest()->paginate(4);
+        $query = request('keyword');
+        
+        if($query){
+            $forums = Forum::where('title', 'like', "%$query%")->latest()->paginate(4);
+        }
+
         return view('forums.index', compact('forums', 'populars'));
     }
 

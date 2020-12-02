@@ -8,12 +8,12 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <form action="">
+                <form action="{{ route('forums.index') }}">
                 <div class="input-group mb-3">
                     <input type="text" name="keyword" class="form-control" placeholder="Cari forum disini..."
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                        <button type="submit" class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
                     </div>
                 </div>
                 </form>
