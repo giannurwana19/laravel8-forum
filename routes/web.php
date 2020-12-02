@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/', [TagController::class, 'store'])->name('tags.store');
         Route::get('create', [TagController::class, 'create'])->name('tags.create');
         Route::get('{tag:slug}/edit', [TagController::class, 'edit'])->name('tags.edit');
+        Route::get('{tag:slug}', [TagController::class, 'show'])->name('tags.show');
         Route::patch('{tag:slug}', [TagController::class, 'update'])->name('tags.update');
         Route::delete('{tag:slug}', [TagController::class, 'destroy'])->name('tags.destroy');
     });

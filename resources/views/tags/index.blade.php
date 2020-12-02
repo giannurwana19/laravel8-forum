@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             @foreach($tags as $tag)
-                            <a href="#" class="btn btn-primary btn-sm mb-2">{{$tag->name}} ({{$tag->forums->count()}}
+                            <a href="{{ route('tags.show', $tag) }}" class="btn btn-primary btn-sm mb-2">{{$tag->name}} ({{ $tag->forums->count() }}
                                 <small>thread</small>)</a>
                             @endforeach
                         </div>

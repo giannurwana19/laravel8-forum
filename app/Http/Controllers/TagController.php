@@ -46,6 +46,13 @@ class TagController extends Controller
         return back();
     }
 
+    public function show(Tag $tag)
+    {
+        $tags = Tag::all();
+        $populars = $this->getPopularForums();
+        return view('tags.show', compact('tag', 'tags', 'populars'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
